@@ -1,0 +1,19 @@
+{
+  "name": "potter-serverless",
+  "version": "0.0.1",
+  "description": "Potter generator for Serverless application.",
+  "main": "lib/generator.js",
+  "scripts": {
+    "test": "test"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "potterjs",
+    "potter",
+    "serverless"
+  ],
+  "author": "Rodrigo Vilar",
+  "license": "ISC"
+}

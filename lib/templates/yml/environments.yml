@@ -1,0 +1,2 @@
+# Environments of <%= metadata.project.name.toUpperCase() %> template
+<%= metadata.project.name.toUpperCase() %>_<%= metadata.entities.name.toUpperCase() %>_TABLE_NAME: ${self:custom.<%= metadata.project.name %><%= metadata.entities.name[0].toUpperCase() %><%= metadata.entities.name.substring(1)%>TableName}

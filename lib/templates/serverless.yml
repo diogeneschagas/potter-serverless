@@ -1,0 +1,54 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: <%= metadata.project.name %>-api
+
+custom:
+  <%- $.invoke('custom-name-table') %>
+  
+
+provider:
+  name: aws
+  runtime: java8
+  stage: ${opt:stage, '<%= metadata.project.version %>'}
+  region: ${opt:region, 'us-east-1'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - <%- $.invoke('permissions-table') %>
+        
+  environment:
+    <%- $.invoke('environment-template') %>
+    
+    
+package:
+  artifact: 'target/${self:service}-${self:provider.stage}.jar'
+
+functions:
+   <%- $.invoke('lambda-functions-template') %>
+
+
+
+
+resources:
+  Resources:
+    <%- $.invoke('resources-table-template') %>
+
+    

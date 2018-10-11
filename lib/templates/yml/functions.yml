@@ -1,0 +1,38 @@
+## Template functions Lambda
+
+list<%= entity.name %>:
+      handler: <%- $.invoke('make-package') %>.crud.List<%= entity.name %>Handler
+      events:
+         - http:
+            path: /<%= entity.name.toLowerCase() %>
+            method: get
+
+
+cadastrar<%= entity.name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Cadastrar<%= entity.name %>Handler
+      events:
+         - http:
+            path: /<%= entity.name.toLowerCase() %>
+            method: post
+   
+   
+   editar<%= entity.name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Editar<%= entity.name %>Handler
+      events:
+         - http:
+            path: /<%= entity.name.toLowerCase() %>/{id}
+            method: put
+      
+   deletar<%= entity.name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Deletar<%= entity.name %>Handler
+      events:
+         - http:
+            path: /<%= entity.name.toLowerCase() %>/{id}
+            method: delete
+            
+   get<%= entity.name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Get<%= entity.name %>Handler
+      events:
+         - http:
+            path: /<%= entity.name.toLowerCase() %>/{id}
+            method: get

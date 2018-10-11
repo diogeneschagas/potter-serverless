@@ -1,0 +1,2 @@
+# Name of the tables in the DynamoDB of the  <%= metadata.project.name.toUpperCase() %> application
+<%= metadata.project.name %><%= metadata.entities.name %>TableName: 'java-<%= metadata.project.name %>-<%= metadata.entities.name.toLowerCase() %>-${self:provider.stage}'
