@@ -14,7 +14,7 @@
 service: <%= metadata.project.name %>-api
 
 custom:
-  <%- $.invoke('custom-name-table') %>
+  <%- $.invokeLoop('custom-name-table',metadata.entities) %>
   
 
 provider:
@@ -32,17 +32,17 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - <%- $.invoke('permissions-table') %>
+<%- $.invoke('permissions-table') %>
         
   environment:
-    <%- $.invoke('environment-template') %>
+<%- $.invoke('environment-template') %>
     
     
 package:
   artifact: 'target/${self:service}-${self:provider.stage}.jar'
 
 functions:
-   <%- $.invoke('lambda-functions-template') %>
+<%- $.invoke('lambda-functions-template') %>
 
 
 

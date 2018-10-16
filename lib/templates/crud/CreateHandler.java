@@ -1,4 +1,4 @@
-package<%-$.invoke('make-package')%>.crud;
+package <%-$.invoke('make-package')%>.crud;
 
 import java.util.Collections;
 import java.util.Map;
@@ -11,11 +11,14 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import<%-$.invoke('make-package')%>.ApiGatewayResponse;import<%-$.invoke('make-package')%>.Response;import<%-$.invoke('make-package')%>.dao.<%=entity.name%>DAO;import<%-$.invoke('make-package')%>.<%=entity.name%>;
+import <%-$.invoke('make-package')%>.ApiGatewayResponse;
+import <%-$.invoke('make-package')%>.Response;
+import <%-$.invoke('make-package')%>.dao.<%=entity.name%>DAO;
+import <%-$.invoke('make-package')%>.model.<%=entity.name%>;
 
 public class Create<%=entity.name%>Handler implements RequestHandler<Map<String,Object>,ApiGatewayResponse> {
 
-	private<%=entity.name%>DAO<%=entity.name%>DAO;
+	private <%=entity.name%>DAO <%=entity.name.toLowerCase()%>DAO;
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	@Override
@@ -29,18 +32,29 @@ public class Create<%=entity.name%>Handler implements RequestHandler<Map<String,
 			<%= entity.name %> <%= entity.name.toLowerCase() %> = new <%= entity.name %>();
 			<%= entity.name.toLowerCase() %>DAO = new <%= entity.name %>DAO();
             
+			<%= entity.name.toLowerCase() %>.set<%= metadata.entities[0].properties[0].name[0].toUpperCase() %><%= metadata.entities[0].properties[0].name.substring(1) %>(body.get("<%= metadata.entities[0].properties[0].name.toLowerCase() %>").asText());
+			/**
+			 * Here the POSTS of the other properties of the entity
+			 * for example:
+			 * <%= entity.name.toLowerCase() %>.setProperty(body.get("property").asType());
+			 *  */			
 			
-			<%- $.invokeLoop ('set-properties-entities', entity.properties) %>
             
 			<%= entity.name.toLowerCase() %>DAO.save(<%= entity.name.toLowerCase() %>);
 
-			<%- $.invoke('success-response-service') %>
+			/**
+			 * SUCCESS RESPONSE SERVICE
+			 * @return success msg.(200)
+			 */
+			return ApiGatewayResponse.builder().setStatusCode(200).setObjectBody(<%= entity.name.toLowerCase() %>)
+			.setHeaders(
+					Collections.singletonMap("X-Powered-By:", "AWS Lambda & Serverless"))
+			.build();
 
-		} catch (Exception ex) {
-			//logger.error("Erro ao salvar <%= entity.name.toLowerCase() %>: " + ex);
-			
-			<%- $.invoke('error-response-service') %>
+			} catch (Exception ex) {
+				
+				<%- $.invoke('error-response-service') %>
 
-		}
+			}
 	}
 }

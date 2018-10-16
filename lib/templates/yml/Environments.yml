@@ -1,0 +1,1 @@
+    <%= metadata.project.name.toUpperCase()%>_<%= metadata.entities[0].name.toUpperCase() %>_TABLE_NAME: ${self:custom.<%= metadata.project.name %><%= metadata.entities[0].name[0].toUpperCase() %><%= metadata.entities[0].name.substring(1)%>TableName}

@@ -1,0 +1,38 @@
+## Template functions Lambda
+
+  list<%= metadata.entities[0].name %>:
+      handler: <%- $.invoke('make-package') %>.crud.List<%= metadata.entities[0].name %>Handler
+      events:
+         - http:
+            path: /<%= metadata.entities[0].name.toLowerCase() %>
+            method: get
+
+
+  cadastrar<%= metadata.entities[0].name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Cadastrar<%= metadata.entities[0].name %>Handler
+      events:
+         - http:
+            path: /<%= metadata.entities[0].name.toLowerCase() %>
+            method: post
+   
+   
+   editar<%= metadata.entities[0].name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Editar<%= metadata.entities[0].name %>Handler
+      events:
+         - http:
+            path: /<%= metadata.entities[0].name.toLowerCase() %>/{id}
+            method: put
+      
+   deletar<%= metadata.entities[0].name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Deletar<%= metadata.entities[0].name %>Handler
+      events:
+         - http:
+            path: /<%= metadata.entities[0].name.toLowerCase() %>/{id}
+            method: delete
+            
+   get<%= metadata.entities[0].name %>:
+      handler: <%- $.invoke('make-package') %>.crud.Get<%= metadata.entities[0].name %>Handler
+      events:
+         - http:
+            path: /<%= metadata.entities[0].name.toLowerCase() %>/{id}
+            method: get

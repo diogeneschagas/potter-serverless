@@ -1,0 +1,1 @@
+        - { "Fn::GetAtt": ["<%= metadata.entities[0].name %>TableName", "Arn" ] }

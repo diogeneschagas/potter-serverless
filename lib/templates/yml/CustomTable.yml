@@ -1,0 +1,1 @@
+<%= metadata.project.name %><%= metadata.entities[0].name %>TableName: 'java-<%= metadata.project.name %>-<%= metadata.entities[0].name.toLowerCase() %>-${self:provider.stage}'

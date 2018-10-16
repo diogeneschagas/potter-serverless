@@ -10,27 +10,27 @@
   
     {
       "port": "custom-name-table",
-      "template": "yml/customTable.yml"
+      "template": "yml/CustomTable.yml"
     },
   
     {
       "port": "permissions-table",
-      "template": "yml/permissions.yml"
+      "template": "yml/Permissions.yml"
     },
   
     {
       "port": "environment-template",
-      "template": "yml/environments.yml"
+      "template": "yml/Environments.yml"
     },
   
     {
       "port":"lambda-functions-template",
-      "template": "yml/functions.yml"
+      "template": "yml/Functions.yml"
     },
   
     {
       "port":"resources-table-template",
-      "template": "yml/resources.yml"
+      "template": "yml/Resources.yml"
     },
     
     {
@@ -44,49 +44,10 @@
     },
   
     {
-      "port":"not-found-response-service",
-      "template":"response/NotFound.java"
-    },
-  
-    {
       "port":"error-response-service",
       "template":"response/Error.java"
     },
-  
-    {
-      "port":"success-response-service",
-      "template":"response/Success.java"
-    },
-  
-    {
-      "port":"invk-to-get-properties-name",
-      "template":"property/ThizProperty.java"
-    },
-  
-    {
-      "port":"invk-to-convert",
-      "template":"property/ArrayPropertyToString.java"
-    },
-  
-    {
-      "port":"property-to-convert-type",
-      "propertyType":"float",
-      "text":"=$%f"
-    },
-  
-    {
-      "port":"property-to-convert-type",
-      "propertyType":"int",
-      "text":"=%d"
-    },
-  
-    {
-      "port":"property-to-convert-type",
-      "propertyType":"string",
-      "text":"=%s"
-    },
-  
-  
+ 
     {
       "port":"make-lambda-functions",
       "chain":["make-lambda-create","make-lambda-list",
@@ -97,79 +58,54 @@
     {
       "port": "make-entity",
       "template": "entity/Entity.java",
-      "output": "src/main/java/${groupPath}/${projectName}/model/${entity.name}.java"
+      "output": "src/main/java/${groupPath}/model/${entity.name}.java"
     },
   
     {
       "port":"make-dao",
       "template":"dao/DAO.java",
-      "output":"src/main/java/${groupPath}/${projectName}/dao/${entity.name}DAO.java"
+      "output":"src/main/java/${groupPath}/dao/${entity.name}DAO.java"
     },
   
     {
       "port":"make-lambda-create",
       "template":"crud/CreateHandler.java",
-      "output":"src/main/java/${groupPath}/${projectName}/crud/Create${entity.name}Handler.java"
+      "output":"src/main/java/${groupPath}/crud/Create${entity.name}Handler.java"
     },
   
     {
       "port":"make-lambda-list",
       "template":"crud/ListHandler.java",
-      "output":"src/main/java/${groupPath}/${projectName}/crud/List${entity.name}Handler.java"
+      "output":"src/main/java/${groupPath}/crud/List${entity.name}Handler.java"
     },
   
     {
       "port":"make-lambda-get",
       "template":"crud/GetHandler.java",
-      "output":"src/main/java/${groupPath}/${projectName}/crud/Get${entity.name}Handler.java"
+      "output":"src/main/java/${groupPath}/crud/Get${entity.name}Handler.java"
     },
   
     {
       "port":"make-lambda-update",
       "template":"crud/UpdateHandler.java",
-      "output":"src/main/java/${groupPath}/${projectName}/crud/Update${entity.name}Handler.java"
+      "output":"src/main/java/${groupPath}/crud/Update${entity.name}Handler.java"
     },
   
     {
       "port":"make-lambda-delete",
       "template":"crud/DeleteHandler.java",
-      "output":"src/main/java/${groupPath}/${projectName}/crud/Delete${entity.name}Handler.java"
+      "output":"src/main/java/${groupPath}/crud/Delete${entity.name}Handler.java"
     },
   
     {
       "port": "make-package",
       "template": "Package.java"
     },
-  
-    {
-      "port":"set-properties-entities",
-      "template":"SetPropertiesEntities.java"
-  
-    },
-  
+ 
     {
       "port": "property-entity",
       "template": "property/Property.java"
     },
-  
-    {
-      "port":"property-post-type",
-      "propertyType":"string",
-      "text":"Text"
-    },
-  
-    {
-      "port":"property-post-type",
-      "propertyType":"int",
-      "text":"Int"
-    },
-  
-    {
-      "port":"property-post-type",
-      "propertyType":"float",
-      "text":"Double"
-    },
-  
     {
       "port": "property-type",
       "propertyType": "int",
@@ -201,15 +137,10 @@
     },
   
     {
-      "port": "property-get-range-key",
-      "template": "property/GetPropertyRangeKey.java"
+      "port":"febe-toicim",
+      "template":"property/SetPostProperty.java"      
     },
-  
-    {
-      "port": "property-set-range-key",
-      "template": "property/SetPropertyRangeKey.java"
-    },
-  
+    
     {
       "port": "property-get",
       "template": "property/GetProperty.java"
@@ -230,17 +161,17 @@
   
           { 
             "template": "ApiGatewayResponse.java",
-            "output": "src/main/java/${groupPath}/${projectName}/ApiGatewayResponse.java"
+            "output": "src/main/java/${groupPath}/ApiGatewayResponse.java"
           },
   
           { 
             "template": "Response.java",
-            "output": "src/main/java/${groupPath}/${projectName}/Response.java"
+            "output": "src/main/java/${groupPath}/Response.java"
           },
   
           { 
-            "template": "ApiGatewayResponse.java",
-            "output": "src/main/java/${groupPath}/${projectName}/ApiGatewayResponse.java"
+            "template": "DynamoDbAdapter.java",
+            "output": "src/main/java/${groupPath}/dao/DynamoDbAdapter.java"
           },
   
           {

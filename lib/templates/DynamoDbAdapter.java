@@ -1,4 +1,4 @@
-package <%- $.invoke('make-package') %>.database;
+package <%- $.invoke('make-package') %>.dao;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -7,7 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 
 import com.amazonaws.regions.Regions;
 
-public class DynamoDBAdapter {
+class DynamoDBAdapter {
 
     private static DynamoDBAdapter db_adapter = null;
     private final AmazonDynamoDB client;

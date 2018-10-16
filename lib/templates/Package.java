@@ -1,1 +1,1 @@
-<%= metadata.project.group %>.<%= metadata.project.name.toLowerCase() %>
+<%= metadata.project.group %>
