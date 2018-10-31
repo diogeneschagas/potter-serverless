@@ -1,0 +1,31 @@
+{
+  "project": {
+    "name": "ecom",
+    "group": "br.com.ufpb.dcx.si",
+    "version": "dev",
+    "label": "ecom",
+    "description": "Apanhando, mas aprendendo",
+    "contact": { "site": "https://diochagas.github.io/", "name": "diogenes" }
+  },
+  "entities": [
+    {
+      "name": "Livro",
+      "labels": {
+        "singular": "Livro",
+        "plural": "Livros"
+      },
+      "id": "id",
+      "properties": [
+        { "name": "title", "label": "Title", "type": "string" },
+        { "name": "author", "label": "Author", "type": "string" },
+        { "name": "edition", "label": "Edition", "type": "int" }
+      ]
+    }
+    
+  ],
+  "resources": {
+    "database": {
+      "tags": ["dynamodb"]
+    }
+  }
+}
