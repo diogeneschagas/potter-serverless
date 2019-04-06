@@ -1,1 +1,3 @@
-        - { "Fn::GetAtt": ["<%= metadata.entities[0].name %>TableName", "Arn" ] }
+
+        - { "Fn::GetAtt": ["<%= entity.name %>DynamoDBTable", "Arn" ] }
+        

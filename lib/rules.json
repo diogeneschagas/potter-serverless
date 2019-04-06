@@ -101,6 +101,11 @@
       "port": "make-package",
       "template": "Package.java"
     },
+    
+    {
+      "port":"property-table-key",
+      "template":"yml/OrderTableProperty.yml"
+    },
  
     {
       "port": "property-entity",
@@ -110,6 +115,12 @@
       "port": "property-type",
       "propertyType": "int",
       "text": "Integer"
+    },
+    
+    {
+      "port": "property-type",
+      "propertyType": "double",
+      "text": "Double"
     },
   
     {
@@ -136,10 +147,6 @@
       "text": "Boolean"
     },
   
-    {
-      "port":"febe-toicim",
-      "template":"property/SetPostProperty.java"      
-    },
     
     {
       "port": "property-get",

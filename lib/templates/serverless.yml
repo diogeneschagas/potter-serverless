@@ -1,20 +1,10 @@
 # Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
 # Happy Coding!
 
 service: <%= metadata.project.name %>-api
 
 custom:
-  <%- $.invokeLoop('custom-name-table',metadata.entities) %>
+  <%- $.invokeLoop('custom-name-table',entities) %>
   
 
 provider:
@@ -32,23 +22,23 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-<%- $.invoke('permissions-table') %>
+<%- $.invokeLoop('permissions-table',entities) %>
         
   environment:
-<%- $.invoke('environment-template') %>
+<%- $.invokeLoop('environment-template',entities) %>
     
     
 package:
   artifact: 'target/${self:service}-${self:provider.stage}.jar'
 
 functions:
-<%- $.invoke('lambda-functions-template') %>
+<%- $.invokeLoop('lambda-functions-template',entities) %>
 
 
 
 
 resources:
   Resources:
-    <%- $.invoke('resources-table-template') %>
+    <%- $.invokeLoop('resources-table-template',entities) %>
 
     

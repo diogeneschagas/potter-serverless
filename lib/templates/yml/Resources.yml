@@ -1,7 +1,7 @@
-<%= metadata.entities[0].name %>DynamoDBTable:
+<%= entity.name %>DynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:custom.<%=metadata.project.name %><%=metadata.entities[0].name %>TableName}
+        TableName: ${self:custom.<%=metadata.project.name %><%=entity.name %>TableName}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -10,9 +10,9 @@
         KeySchema:
           - AttributeName: id
             KeyType: HASH
-          - AttributeName: <%=  metadata.entities[0].properties[0].name.toLowerCase() %>
+          - AttributeName: <%= metadata.entities[0].properties[0].name.toLowerCase() %>
             KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        
+    
